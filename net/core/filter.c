@@ -114,6 +114,9 @@ BPF_CALL_1(__skb_get_pay_offset, struct sk_buff *, skb)
 	return skb_get_poff(skb);
 }
 
+const struct ipv6_bpf_stub *ipv6_bpf_stub __read_mostly;
+EXPORT_SYMBOL_GPL(ipv6_bpf_stub);
+
 BPF_CALL_3(__skb_get_nlattr, struct sk_buff *, skb, u32, a, u32, x)
 {
 	struct nlattr *nla;
