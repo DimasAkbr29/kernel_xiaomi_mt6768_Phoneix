@@ -1194,18 +1194,6 @@ SYSCALL_DEFINE1(newuname, struct new_utsname __user *, name)
 
 	down_read(&uts_sem);
 	memcpy(&tmp, utsname(), sizeof(tmp));
-#ifdef CONFIG_KSU_SUSFS_SPOOF_UNAME
-bypass_orig_flow:
-#endif
-	if (!is_legacy_ebpf) {
-	  if (!strncmp(current->comm, "netbpfload", 10) &&
-	      current->pid != netbpfload_pid) {
-	    netbpfload_pid = current->pid;
-	    strcpy(tmp.release, "6.6.40");
-	    pr_debug("fake uname: %s/%d release=%s\n",
-		     current->comm, current->pid, tmp.release);
-	  }
-	}
 // make sure bpf uname spoof is prioritized
 #ifdef CONFIG_KSU_SUSFS_SPOOF_UNAME
 	susfs_spoof_uname(&tmp);
