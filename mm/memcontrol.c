@@ -1537,12 +1537,21 @@ static enum oom_status mem_cgroup_oom(struct mem_cgroup *memcg, gfp_t mask, int 
 	 * handling until the charge can succeed; remember the context and put
 	 * the task to sleep at the end of the page fault when all locks are
 	 * released.
+<<<<<<< HEAD
 	 *
 	 * On the other hand, in-kernel OOM killer allows for an async victim
 	 * memory reclaim (oom_reaper) and that means that we are not solely
 	 * relying on the oom victim to make a forward progress and we can
 	 * invoke the oom killer here.
 	 *
+=======
+	 *
+	 * On the other hand, in-kernel OOM killer allows for an async victim
+	 * memory reclaim (oom_reaper) and that means that we are not solely
+	 * relying on the oom victim to make a forward progress and we can
+	 * invoke the oom killer here.
+	 *
+>>>>>>> 9c7f407c3f9f46655b8549b6142ee70a718c932b
 	 * Please note that mem_cgroup_out_of_memory might fail to find a
 	 * victim and then we have to bail out from the charge path.
 	 */
